@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase:{
+    apiKey: "AIzaSyDyk1yeNaQDztp3DbGlGGFUme689zxe6oU",
+    authDomain: "onlineholo.firebaseapp.com",
+    databaseURL: "https://onlineholo.firebaseio.com",
+    projectId: "onlineholo",
+    storageBucket: "onlineholo.appspot.com",
+    messagingSenderId: "677016547218"
+  }
 };
 
 /*

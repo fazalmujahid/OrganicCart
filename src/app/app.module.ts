@@ -1,7 +1,11 @@
+import { environment } from './../environments/environment';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { AngularFireModule } from 'angularfire2'
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database'
+import { AngularFireAuthModule } from 'angularfire2/auth'
 
 import { RouterModule } from '@angular/router'
 import { AppComponent } from './app.component';
@@ -15,7 +19,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent} from './login/login.component' 
-@NgModule({
+@NgModule({ 
   declarations: [
     AppComponent,
     NavBarComponent,
@@ -31,6 +35,9 @@ import { LoginComponent} from './login/login.component'
   ],
   imports: [
     BrowserModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp(environment.firebase),
     NgbModule.forRoot(),
     RouterModule.forRoot([
       {path:'', component:HomeComponent},
