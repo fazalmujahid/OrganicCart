@@ -1,3 +1,5 @@
+import { UserService } from './user.service';
+import { AdminAuthGuard } from './admin-auth-guard.service';
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from 'src/app/auth.service';
 import { environment } from './../environments/environment';
@@ -51,13 +53,15 @@ import { LoginComponent} from './login/login.component'
       {path:'my/orders', component:MyOrdersComponent, canActivate:[AuthGuardService]},
       {path:'order-success', component:OrderSuccessComponent, canActivate:[AuthGuardService]},
       
-      {path:'admin/products', component:AdminProductsComponent, canActivate:[AuthGuardService]},
-      {path:'admin/orders', component:AdminOrdersComponent, canActivate:[AuthGuardService]},
+      {path:'admin/products', component:AdminProductsComponent, canActivate:[AuthGuardService,AdminAuthGuard]},
+      {path:'admin/orders', component:AdminOrdersComponent, canActivate:[AuthGuardService,AdminAuthGuard]},
     ])
   ],
   providers: [
     AuthService,
     AuthGuardService,
+    AdminAuthGuard,
+    UserService,
   ],
   bootstrap: [AppComponent]
 })
