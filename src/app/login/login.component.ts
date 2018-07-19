@@ -7,8 +7,9 @@ import { AuthService } from 'src/app/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent   {
-
-  constructor(private auth: AuthService) { }
+  x;
+  constructor(private auth: AuthService) { 
+  }
 
   login(){
    this.auth.login();

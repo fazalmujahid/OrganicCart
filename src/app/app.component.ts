@@ -9,16 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private userService: UserService, private auth: AuthService, router: Router){
-    auth.user$.subscribe(user =>{
-      if(user) {
+  constructor(private userService: UserService,
+     private auth: AuthService,
+     private router: Router){
 
-        userService.save(user);
-
-        let returnUrl = localStorage.getItem('returnUrl');
-        if(returnUrl !== 'null') router.navigateByUrl(returnUrl);
-        else router.navigateByUrl("");
-      } 
+        auth.user$.subscribe(user =>{
+        if(user) {
+          userService.save(user);
+          let returnUrl = localStorage.getItem('returnUrl');
+          console.log(returnUrl === 'null');
+          if(returnUrl !== 'null') router.navigateByUrl(returnUrl);
+        } 
     })
   }
 }

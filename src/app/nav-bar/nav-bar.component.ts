@@ -1,21 +1,21 @@
-import { Component } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { Observable } from 'rxjs/internal/Observable';
-import { AuthService } from 'src/app/auth.service';
+import { AppUser } from './../modals/app-user';
+import { AuthService } from './../auth.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'nav-bar',
+  selector: 'bs-navbar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent   {
-  user$: Observable<firebase.User>;
-  constructor(public auth: AuthService) {
-    
-   }
+export class NavbarComponent {
+  appUser: AppUser;
 
-  logout(){
-   this.auth.logout();
+  constructor(private auth: AuthService) { 
+    auth.appUser$.subscribe(appUser => this.appUser = appUser);
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
 }
